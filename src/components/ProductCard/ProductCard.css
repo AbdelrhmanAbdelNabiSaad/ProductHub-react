@@ -1,0 +1,92 @@
+.product-card {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+.product-card:hover {
+    border-color: var(--border-focus);
+    transform: translateX(-2px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), var(--shadow-glow);
+}
+.product-card .card-image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.product-card .card-image img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product-card .card-category-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  background-color: var(--bg-input);
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 700;
+}
+.product-card .card-body {
+    padding: 15px 20px;
+    flex: 1;
+   display: flex;
+   flex-direction: column;
+   gap: 8px; 
+}
+.product-card .card-body .card-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-card .card-body .card-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    flex: 1;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.product-card .card-body .card-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-input);
+    padding: 8px 12px;
+    margin-top: 5px;
+    border-radius: var(--radius-sm);
+}
+.product-card .card-body .card-price .price-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.product-card .card-body .card-price .price-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--success);
+    font-family: 'Space Mono', monospace;
+}
+.product-card .card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 18px;
+    border-top: 2px solid var(--border);
+}
+.product-card .card-actions .card-btn {
+    justify-content: center;
+}

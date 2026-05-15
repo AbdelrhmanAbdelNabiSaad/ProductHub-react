@@ -1,0 +1,175 @@
+.home-page { 
+    min-height: calc(100vh - 62px);
+    position: relative;
+    margin-bottom: 60px;
+}
+.home-page .home-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    position: relative;
+    z-index: 1;
+}
+.home-page .home-inner .welcome-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+.home-page .home-inner .welcome-strip .page-title {
+    color: var(--text-primary);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+}
+.home-page .home-inner .welcome-strip .page-sub {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+.home-page .home-inner .welcome-strip .page-sub strong {
+    color: var(--accent);
+}
+.home-page .stats-row{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.home-page .stats-row .stat-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    min-width: 90px;
+}
+.home-page .stats-row .stat-chip.stat-chip--green {
+    border-color: rgba(16,212,142,0.3);
+}
+.home-page .stats-row .stat-chip.stat-chip--green .stat-num {
+    color: var(--success);
+}
+.home-page .stats-row .stat-chip .stat-num {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+}
+.home-page .stats-row .stat-chip .stat-lbl {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+.home-page .home-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 25px;
+    align-items: start;
+}
+@media(max-width: 991px) {
+    .home-page .home-layout {
+        grid-template-columns: 1fr;
+    }
+}
+.home-page .home-layout .form-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.home-page .home-layout .toggle-form-btn {
+    width: 100%;
+    justify-content: center;
+}
+.home-page .home-layout .toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.home-page .home-layout .toolbar .search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.home-page .home-layout .toolbar .search-wrap .search-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 17px;
+    pointer-events: none;
+    color:var(--text-primary);
+}
+.home-page .home-layout .toolbar .search-wrap .search-input {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+.home-page .home-layout .toolbar .search-wrap .search-clear {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px;
+    transition: var(--transition);
+}
+.home-page .home-layout .toolbar .search-wrap .search-clear:hover {
+    color: var(--danger);
+}
+.home-page .home-layout .filter-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.home-page .home-layout .filter-tabs .filter-tab {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background-color: var(--bg-card);
+    font-family: 'Sora', sans-serif;
+    border: 2px solid var(--border);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: capitalize;
+}
+.home-page .home-layout .filter-tabs .filter-tab:hover{ 
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.home-page .home-layout .filter-tabs .filter-tab.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-primary);
+    box-shadow: 0 2px 12px var(--accent-glow);
+}
+.home-page .home-layout .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+.home-page .empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 70px 25px;
+}
+.home-page .empty-state .empty-icon {
+    font-size: 50px;
+    color: var(--warning);
+    margin-bottom: 15px;
+}
+.home-page .empty-state h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+.home-page .empty-state p {
+    font-size: 17px;
+}
