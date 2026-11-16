@@ -1,29 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ProductForm.css";
 import { validateField } from "../../utils/validation";
-import { error } from "generate-react-cli/src/utils/messagesUtils";
 
 export default function ProductForm({ onSubmit, editProduct, onCancel }) {
   const categories = ["mobile", "laptop", "tv", "watch", "tablet"];
   const empty = { name: "", price: "", category: "", description: "" };
-  const [form, setForm] = useState(empty);
+  // The parent gives this form a key, so it remounts (and re-reads editProduct) whenever the edited product changes
+  const [form, setForm] = useState(
+    editProduct
+      ? { name: editProduct.name, price: editProduct.price, category: editProduct.category, description: editProduct.description }
+      : empty
+  );
   const [errors, setErrors] = useState({});
   const isEditing = !!editProduct;
-
-  useEffect(() => {
-    if (editProduct) {
-      setForm({
-        name: editProduct.name,
-        price: editProduct.price,
-        category: editProduct.category,
-        description: editProduct.description,
-      })
-      setErrors({});
-    } else {
-      setForm(empty);
-      setErrors({});
-    }
-  }, [editProduct])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -149,10 +138,10 @@ export default function ProductForm({ onSubmit, editProduct, onCancel }) {
             type="submit"
             className={`btn btn-sm ${isEditing ? "btn-warning" : "btn-primary"}`}
           >
-            {isEditing ? "Update Prodcut" : "Add Product"}
+            {isEditing ? "Update Product" : "Add Product"}
           </button>
           {isEditing && (
-            <button className="btn btn-danger btn-sm" onClick={onCancel}>
+            <button type="button" className="btn btn-danger btn-sm" onClick={onCancel}>
               Cancel
             </button>
           )}

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import toast from 'react-hot-toast';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.webp'
 
 export default function Navbar() {
 

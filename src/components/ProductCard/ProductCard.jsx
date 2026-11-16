@@ -1,11 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ProductCard.css";
-import { faFolder } from "@fortawesome/free-solid-svg-icons";
-import laptop from "../../assets/laptop.jpg";
-import mobile from '../../assets/mobile.png';
-import tablet from '../../assets/tablet.jpeg';
-import watch from '../../assets/watch.png';
-import tv from '../../assets/tv.jpeg'
+import laptop from "../../assets/laptop.webp";
+import mobile from '../../assets/mobile.webp';
+import tablet from '../../assets/tablet.webp';
+import watch from '../../assets/watch.webp';
+import tv from '../../assets/tv.webp'
 const category_icons = {
   mobile: mobile,
   laptop: laptop,
@@ -17,12 +15,12 @@ const category_icons = {
 
 
 export default function ProductCard({ product, onDelete, onEdit }) {
-    const icon = category_icons[product.category] || "📦";
+    const icon = category_icons[product.category];
   return (
     <>
       <div className="product-card fade-up">
         <div className="card-image">
-          <img src={icon} alt="Laptopn Image" />
+          {icon ? <img src={icon} alt={product.name} loading="lazy" /> : <span aria-hidden="true">📦</span>}
         </div>
         <div className="card-body">
           <h3 className="card-name">{product.name}</h3>

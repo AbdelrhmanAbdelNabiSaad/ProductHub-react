@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useCallback, useState } from "react";
 
 export const ProductsContext = createContext();
@@ -25,12 +26,12 @@ export default function ProductsContextProvider({ children }) {
         saveProducts([...products, newProduct]);
     }, [products]);
 
-    const updateProduct = useCallback((id, date) => {
-        saveProducts(products.map(p => p.id === id ? { ...p, ...date } : p));
+    const updateProduct = useCallback((id, data) => {
+        saveProducts(products.map(p => p.id === id ? { ...p, ...data } : p));
     }, [products]);
 
     const deleteProduct = useCallback((id) => {
-        saveProducts(products.filter(p => p.id != id));
+        saveProducts(products.filter(p => p.id !== id));
     }, [products]);
 
 

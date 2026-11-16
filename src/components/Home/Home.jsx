@@ -12,7 +12,6 @@ export default function Home() {
   const { currentUser } = useContext(AuthContext);
   const { products, addProduct, updateProduct, deleteProduct } =
     useContext(ProductsContext);
-  console.log(products);
   const categories = ["all", "mobile", "laptop", "tv", "watch", "tablet"];
   const [search, setSearch] = useState("");
   const [showForm, setShowForm] = useState(true);
@@ -28,16 +27,19 @@ export default function Home() {
       return matchSearch && matchCat;
     });
   },[products,search, filterCat]);
-  console.log(filtered);
+
+  const averagePrice = products.length
+    ? Math.round(products.reduce((sum, p) => sum + Number(p.price), 0) / products.length)
+    : 0;
 
   const handleSubmit = (data) => {
     if (editProduct) {
       updateProduct(editProduct.id, data);
-      toast.success("DM Update Product");
+      toast.success("Product updated");
       setEditProduct(null);
     } else {
       addProduct(data);
-      toast.success("DM Add Product");
+      toast.success("Product added");
     }
   };
 
@@ -48,9 +50,9 @@ export default function Home() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Do You Sure Delete This Product")) {
+    if (window.confirm("Delete this product?")) {
       deleteProduct(id);
-      toast.success("DM Deletetd Product");
+      toast.success("Product deleted");
     }
   };
 
@@ -73,11 +75,11 @@ export default function Home() {
             </div>
             <div className="stats-row">
               <div className="stat-chip">
-                <span className="stat-num">0</span>
-                <span className="stat-lbl">Product</span>
+                <span className="stat-num">{products.length}</span>
+                <span className="stat-lbl">Products</span>
               </div>
               <div className="stat-chip stat-chip--green">
-                <span className="stat-num">0</span>
+                <span className="stat-num">{averagePrice.toLocaleString()}</span>
                 <span className="stat-lbl">Average Price</span>
               </div>
             </div>
@@ -88,10 +90,11 @@ export default function Home() {
                 className="btn btn-outline btn-sm toggle-form-btn"
                 onClick={() => setShowForm((p) => !p)}
               >
-                {showForm ? "Show The Form" : "Hidden The Form"}
+                {showForm ? "Hide the form" : "Show the form"}
               </button>
               {showForm && (
                 <ProductForm
+                  key={editProduct?.id ?? "new"}
                   onSubmit={handleSubmit}
                   editProduct={editProduct}
                   onCancel={handleCancel}
@@ -109,7 +112,7 @@ export default function Home() {
                     value={search}
                     onChange={(e)=> setSearch(e.target.value)}
                     className="form-control search-input"
-                    placeholder="Search by product name or product category"
+                    placeholder="Search by product name or description"
                   />
                   {search && (
                     <button
@@ -123,6 +126,7 @@ export default function Home() {
                 <div className="filter-tabs">
                   {categories.map((cat) => (
                     <button
+                      key={cat}
                       className={`filter-tab ${filterCat === cat ? "active" : ""}`}
                       onClick={() => setFilterCat(cat)}
                     >
@@ -153,7 +157,7 @@ export default function Home() {
                 <>
                   <div className="products-grid">
                     {filtered.map((p, i) => (
-                      <div key={i} style={{ animationDelay: `${i * 0.6}s` }}>
+                      <div key={p.id} style={{ animationDelay: `${Math.min(i, 8) * 0.06}s` }}>
                         <ProductCard
                           product={p}
                           onDelete={handleDelete}

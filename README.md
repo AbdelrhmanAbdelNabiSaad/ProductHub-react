@@ -1,68 +1,33 @@
-# CRUD App (React)
+# ProductHub
 
-A full-featured product management application built with **React 18**, **React Router v6**, and **Context API**. Converted and upgraded from a vanilla JS project.
+A product management app (CRUD) built with **React 19**, **React Router 7** and the **Context API**.
 
----
+Live demo: https://abdelrhmanabdelnabisaad.github.io/ProductHub-react/
 
-##  Features
+## Features
+- Register and login with validation and a password visibility toggle
+- Protected dashboard route, session saved in localStorage
+- Add, edit and delete products with field-by-field validation
+- Live search by name or description, and filter by category
+- Stats: total products and average price
+- Toast notifications with react-hot-toast
 
-###  Authentication
-- Register with name, email, and password
-- Login with validation and error messages
-- Password strength indicator on register
-- Protected routes — dashboard requires login
-- Persistent sessions via localStorage
+## Validation rules
+- Product name: starts with a capital letter, 2 to 15 characters (letters, digits, spaces, hyphens)
+- Price: whole number, at least 3 digits
+- Description: at least 30 characters
+- Auth: valid email, password of 6+ characters, name of 3 to 30 letters
 
-###  Product Management (CRUD)
-- **Add** products with full validation
-- **Edit** products inline with form pre-fill
-- **Delete** with confirmation dialog
-- **Search** by name or description (real-time)
-- **Filter** by category (mobile, laptop, tv, watch, tablet)
-- Stats dashboard (total products, average price)
-
-### Validation
-- Product name: starts with capital letter, 2–15 chars
-- Price: minimum 3 digits
-- Category: must be from predefined list
-- Description: minimum 30 characters
-- Auth: email format, password length, name length
-- Real-time field validation with visual feedback
-
----
-
-## 🛠 Tech Stack
-
-- React 18 => UI framework
-- Vite => Build Tool
-- React Router v6 => Client Stat (Auth + Products)
-- Context API => Global Stat (Auth + Products)
-- react-hot-toast => Toast Notification
-- localStorage => Data Persistence
-
----
-
-## ScreenShot
-[!Register](./design/register.png)
-[!Error Register Not Add Data](./design/error-register.png)
-[!Matched Password With Confirm Password](./design/match-password.png)
-[!Login](./design/login.png)
-[!Invalid Login](./design/invalid-login.png)
-[!Home](./design/home.png)
-[!Regular Expression](./design/regular-products.png)
-[!Add Products](./design/add-product.png)
-
-## 🚀 Run Locally
-
+## Run it
 ```bash
 npm install
 npm run dev
 ```
 
----
+## Deploy to GitHub Pages
+```bash
+npm run deploy
+```
+The build also creates `dist/404.html` (a copy of `index.html`), so refreshing or opening a direct link such as `/login` works on GitHub Pages.
 
-##  Developer by
-
-**Abdelrhman Saad** — Front-End Developer  
-Converted from Vanilla JS → React with Auth, Routing, Context API
-
+> Data and accounts are stored in the browser (localStorage) only, so this is a front-end demo with no real backend.

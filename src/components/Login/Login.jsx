@@ -4,7 +4,6 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import toast from 'react-hot-toast';
 import { validateAuthField } from '../../utils/validation';
-import { error } from 'generate-react-cli/src/utils/messagesUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 

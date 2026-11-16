@@ -1,10 +1,8 @@
 
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Login from './components/Login/Login'
-import Navbar from './components/Navbar/Navbar'
 import Register from './components/Register/Register'
-import Footer from './components/Footer/Footer'
 import Layout from './components/Layout/Layout'
 import Home from './components/Home/Home'
 import AuthContextProvider from './Context/AuthContext'

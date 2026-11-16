@@ -1,4 +1,4 @@
-// import { success } from "generate-react-cli/src/utils/messagesUtils";
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useCallback, useState } from "react";
 
 export const AuthContext = createContext(null);
@@ -34,7 +34,7 @@ export default function AuthContextProvider({ children }) {
     if (!user) {
       return { success: false, message: "Invalid Email Or Password" };
     }
-    const { password: _, ...safeUser } = user;
+    const safeUser = { id: user.id, name: user.name, email: user.email, createAt: user.createAt };
     setCurrentUser(safeUser);
     localStorage.setItem("currentUser", JSON.stringify(safeUser));
     return { success: true };
